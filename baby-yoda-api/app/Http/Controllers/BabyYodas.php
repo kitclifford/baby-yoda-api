@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\BabyYoda; //model babyYoda
 
+use App\Http\Resources\BabyYodaResource;
+use App\Http\Requests\BabyYodaRequests;
 use Illuminate\Http\Request;
 
 class BabyYodas extends Controller
@@ -15,19 +17,20 @@ class BabyYodas extends Controller
      */
     public function index()
     {
-        //
+        return BabyYodaResource::collection(BabyYoda::all());
     }
 
 
-    public function store(Request $request)
+    public function store(BabyYodaRequest $request)
     {
         $data = $request->all();
-        return BabyYoda::create($data);
+        $babyYoda = BabyYoda::create($data);
+        return new BabyYodaResource($babyYoda);
     }
 
-    public function show($id)
+    public function show(BabyYoda $babyYoda)
     {
-        //
+        return new BabyYodaResource($babyYoda);
     }
 
     /**
@@ -37,9 +40,11 @@ class BabyYodas extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BabyYodaRequest $request, BabyYoda $babyYoda)
     {
-        //
+        $data = $request->all();
+        $babyYoda->fill($data)->save();
+        return new BabyYodaResource($babyYoda);
     }
 
     /**
@@ -48,8 +53,9 @@ class BabyYodas extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(BabyYoda $babyYoda)
     {
-        //
+        $babyYoda->delete();
+        return response(null, 204);
     }
 }
