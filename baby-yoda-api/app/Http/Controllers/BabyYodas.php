@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\BabyYoda; //model babyYoda
 
 use App\Http\Resources\BabyYodaResource;
-use App\Http\Requests\BabyYodaRequests;
+use App\Http\Requests\BabyYodaRequest;
 use Illuminate\Http\Request;
 
 class BabyYodas extends Controller
