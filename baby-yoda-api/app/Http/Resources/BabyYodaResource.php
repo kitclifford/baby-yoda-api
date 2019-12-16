@@ -16,8 +16,8 @@ class BabyYodaResource extends JsonResource
     {
         return [
             "id" => $this->id,
-            "name" => $this->title,
-            "colour" => $this->article,
+            "name" => $this->name,
+            "colour" => $this->colour,
             "health" => $this->health,
             "age" => $this->age,
             "alive" => $this->alive,
