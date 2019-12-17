@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use App\BabyYoda;
 use App\Feed;
 
+use Illuminate\Support\Collection;
+use App\Http\Resources\FeedResource;
+
 use Illuminate\Http\Request;
 
 class Feeds extends Controller
@@ -15,7 +18,9 @@ class Feeds extends Controller
      */
     public function index(BabyYoda $babyYoda)
     {
-        return $babyYoda->feeds;
+        $ordered_feeds = Feed::all();
+        $ordered_feeds = Feed::orderBy('created_at', 'DESC')->get();
+        return FeedResource::Collection($ordered_feeds);
     }
 
     /**

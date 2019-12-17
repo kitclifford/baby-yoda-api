@@ -18,7 +18,7 @@ class CreateBabyYodasTable extends Migration
             $table->string('name', 100);
             $table->string('colour', 100);
             $table->tinyInteger('health');
-            $table->integer('age');
+            $table->integer('dob');
             $table->boolean('alive');
             $table->timestamps();
         });

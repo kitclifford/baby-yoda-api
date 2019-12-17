@@ -21,7 +21,8 @@ class BabyYodaResource extends JsonResource
             "health" => $this->health,
             "age" => $this->age,
             "alive" => $this->alive,
-            "created_at" => $this->created_at
+            "created_at" => $this->created_at,
+            "dob" => $this->created_at->timestamp
         ];
     }
 }

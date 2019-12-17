@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Collection;
 
 use App\BabyYoda; //model babyYoda
-
 use App\Http\Resources\BabyYodaResource;
 use App\Http\Requests\BabyYodaRequest;
 use Illuminate\Http\Request;
