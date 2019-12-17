@@ -22,8 +22,8 @@ All rights to Star Wars and the 'Baby Yoda' character owned by Disney.
 * post/baby_yoda/{id}/feed
 :feed specific baby yoda
 
-* get/baby_yoda/{id}/feed
-:get all feed for specific baby yoda
+* get/baby_yoda/{id}/feeds
+:get all feeds for specific baby yoda in descending order
 
 
 
