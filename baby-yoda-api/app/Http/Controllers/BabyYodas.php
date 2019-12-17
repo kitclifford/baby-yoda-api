@@ -4,17 +4,17 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Collection;
 
 use App\BabyYoda; //model babyYoda
+use App\Feed;
+use App\Http\Resources\FeedRecource;
 use App\Http\Resources\BabyYodaResource;
+use App\Http\Resources\BabyYodaFeedResource;
 use App\Http\Requests\BabyYodaRequest;
+
 use Illuminate\Http\Request;
 
 class BabyYodas extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         return BabyYodaResource::collection(BabyYoda::all());
@@ -33,13 +33,17 @@ class BabyYodas extends Controller
         return new BabyYodaResource($babyYoda);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function show_feeds(BabyYoda $babyYoda)
+    {
+
+        $feeds = BabyYodaFeedResource::Collection($babyYoda->feeds);
+        $sorted_feeds = $feeds->sort (function ($a, $b) {
+            return $a > $b ? -1 : 1 ;
+         });
+
+         return $sorted_feeds;
+    }
+
     public function update(BabyYodaRequest $request, BabyYoda $babyYoda)
     {
         $data = $request->all();
@@ -47,12 +51,6 @@ class BabyYodas extends Controller
         return new BabyYodaResource($babyYoda);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(BabyYoda $babyYoda)
     {
         $babyYoda->delete();

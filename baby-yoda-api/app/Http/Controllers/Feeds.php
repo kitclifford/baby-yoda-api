@@ -6,35 +6,30 @@ use App\Feed;
 
 use Illuminate\Support\Collection;
 use App\Http\Resources\FeedResource;
+use App\Http\Resources\BabyYodaResource;
+use App\Http\Resources\BabyYodaFeedResource;
 
 use Illuminate\Http\Request;
 
 class Feeds extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(BabyYoda $babyYoda)
     {
-        $ordered_feeds = Feed::all();
+        $ordered_feeds = Feed::find($babyYoda);
         $ordered_feeds = Feed::orderBy('created_at', 'DESC')->get();
-        return FeedResource::Collection($ordered_feeds);
+        return FeedResource::Collection($ordered_feeds); //get all feeds by decending order
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request, BabyYoda $babyYoda)
     {
         $feed = new Feed($request->all());
-
         $babyYoda->feeds()->save($feed);
-
         return $feed;
+    }
+
+    public function show(BabyYoda $babyYoda)
+    {
+        return new FeedResource($babyYoda);
     }
 }

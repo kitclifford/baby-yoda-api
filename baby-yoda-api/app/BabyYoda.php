@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BabyYoda extends Model
 {
-    protected $fillable = ["name", "colour", "health", "age", "alive" ];
+    protected $fillable = ["name", "colour"];
 
     public function feeds()
     {

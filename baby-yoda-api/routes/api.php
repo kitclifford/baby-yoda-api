@@ -20,17 +20,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 $router->group(["prefix" => "baby_yoda"], function ($router) {
 
     $router->post("", "BabyYodas@store");
-    $router->get("", "BabyYodas@index");// get all book
-    $router->get("{babyYoda}", "BabyYodas@show");// to get a single yoda
-    $router->put("{babyYoda}", "BabyYodas@update"); // update selected id yoda - url/idnumber
-    $router->delete("{babyYoda}", "BabyYodas@destroy");
-     // $router->get("/{book_id}/books", "BabyYodas@show_shops"); // not sure of this now
+    $router->get("", "BabyYodas@index"); // get all yodas
+    $router->get("{babyYoda}", "BabyYodas@show"); // to get a single yoda
+    $router->delete("{babyYoda}", "BabyYodas@destroy"); // kill a single yoda 
+    $router->post("/{babyYoda}/feed", "Feeds@store");  // to feed specific yoda 
+    $router->get("/{babyYoda}/feeds", "BabyYodas@show_feeds"); // get all feeds for a single yodas in decending order
 });
 
-$router->group(["prefix" => "baby_yoda"], function ($router) {
-
-    $router->post("{babyYoda}/feed", "Feeds@store");
-    $router->get("{babyYoda}/feed", "Feeds@index");// get all book
-
-
-});
+   

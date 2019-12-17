@@ -17,9 +17,7 @@ class CreateBabyYodasTable extends Migration
             $table->bigIncrements('id');
             $table->string('name', 100);
             $table->string('colour', 100);
-            $table->tinyInteger('health');
-            $table->integer('dob');
-            $table->boolean('alive');
+            $table->boolean('alive')->default(true);
             $table->timestamps();
         });
     }
