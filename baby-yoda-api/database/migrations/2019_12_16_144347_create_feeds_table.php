@@ -17,7 +17,6 @@ class CreateFeedsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->bigInteger('baby_yoda_id')->unsigned();
-
             $table->foreign('baby_yoda_id')->references('id')->on('baby_yodas')->onDelete('cascade');
         });
     }

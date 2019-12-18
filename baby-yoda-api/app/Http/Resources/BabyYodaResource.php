@@ -14,7 +14,7 @@ class BabyYodaResource extends JsonResource
             "name" => $this->name,
             "colour" => $this->colour,
             "alive" => $this->alive,
-            "dob" => $this->created_at->timestamp
+            "dob" => $this->created_at->timestamp,
         ];
     }
 }
