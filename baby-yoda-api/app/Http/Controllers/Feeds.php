@@ -25,7 +25,7 @@ class Feeds extends Controller
     {
         $feed = new Feed($request->all());
         $babyYoda->feeds()->save($feed);
-        return $feed;
+        return new  FeedResource($feed);
     }
 
     public function show(BabyYoda $babyYoda)
