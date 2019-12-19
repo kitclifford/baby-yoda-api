@@ -18,6 +18,8 @@ class BabyYodas extends Controller
     public function index()
     {
         return BabyYodaResource::collection(BabyYoda::all());
+
+        
     }
 
 
@@ -37,18 +39,6 @@ class BabyYodas extends Controller
 
     public function find_yoda($yodaName)
     {   
-
-
-        // $feeds = BabyYodaFeedResource::Collection($yodaName->feeds);
-
-        // $sorted_feeds = $feeds->sort (function ($a, $b) {
-        //     return $a > $b ? -1 : 1 ;
-        //  });
-
-        // return $sorted_feeds;
-
-
-        //this will get existing yoda by name
         $searched_yoda = BabyYoda::where('name', $yodaName)->get();
         
         if (count($searched_yoda) > 0){
