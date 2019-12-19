@@ -37,18 +37,43 @@ class BabyYodas extends Controller
 
     public function find_yoda($yodaName)
     {   
+
+
+        // $feeds = BabyYodaFeedResource::Collection($yodaName->feeds);
+
+        // $sorted_feeds = $feeds->sort (function ($a, $b) {
+        //     return $a > $b ? -1 : 1 ;
+        //  });
+
+        // return $sorted_feeds;
+
+
+        //this will get existing yoda by name
         $searched_yoda = BabyYoda::where('name', $yodaName)->get();
-        if (count($searched_yoda)){
-            return $searched_yoda;
-        } else {
+        
+        if (count($searched_yoda) > 0){
+            $baby_yoda_data = new BabyYodaResource($searched_yoda[0]); //an array searched by name
+            $latest = 0;
+
+            foreach($baby_yoda_data->feeds AS $feed){
+                $unix_feed_time = strtotime($feed->created_at);
+                if ($latest < $unix_feed_time){
+                    $latest = $unix_feed_time;
+                }
+            }
+            $baby_yoda_data->latest_feed = $latest;
+
+            return new BabyYodaResource($baby_yoda_data);
+
+        }else{
             return [ "error" => "This yoda does not exist!" ];
         }
     }
 
     public function show(BabyYoda $babyYoda)
     {
-
-         return new BabyYodaResource($babyYoda);
+      
+        return new BabyYodaResource($babyYoda);
     }
 
     public function show_feeds(BabyYoda $babyYoda)
