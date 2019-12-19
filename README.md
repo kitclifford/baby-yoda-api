@@ -27,28 +27,26 @@ All rights to Star Wars and the 'Baby Yoda' character owned by Disney.
 
 ## How to start 
 
-open your terminal
-cd into the right project folder 
-run composer global require laravel/installer
-run composer require laravel/homestead
-run vendor/bin/homestead make
+1. open your terminal
+2. cd into the right project folder 
+3. run composer global require laravel/installer
+4. run composer require laravel/homestead
+5. run vendor/bin/homestead make
 (This should have added a Homestead.yaml and Vagrantfile to your project.)
 
-run vagrant up 
-run vagrant ssh 
+6. run vagrant up 
+7. run vagrant ssh 
+8. create .env file and edit database info
 
-create .env file and edit database info 
-
+```
 DB_DATABASE=homestead
 DB_USERNAME=root
 DB_PASSWORD=secret
 
-artisan key:generate
-artisan migrate
+```
+9. run artisan key:generate
+10.run artisan migrate
 
-homestead
-<!-- Homestead.yaml file
-memory: 512 -->
 
 
 
