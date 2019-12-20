@@ -1,9 +1,11 @@
 # baby-yoda-api
-For use with the Baby Yoda Gotchi webapp.
-
-Created by Gareth Dobson, Jae Lee and Kit Clifford-Page.
+Developed by Team Can-do-lorians - Gareth Dobson, Jae Lee and Kit Clifford-Page.
 
 All rights to Star Wars and the 'Baby Yoda' character owned by Disney.
+
+Baby Yoda facial animation sourced from https://codepen.io/shshaw/pen/QWwyaNR, built by Shaw.
+
+Developed using Laravel for use with our webapp built with React-Redux - https://github.com/kitclifford/baby-yoda-gotchi.
 
 ## API routes
 
